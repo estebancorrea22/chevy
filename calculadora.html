@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="calculadora.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+    <title>Calculadora de Presupuesto - Chevrolet Chevy Care</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="index.html">
+            <img src="image/logo.jpeg" alt="Logo" class="logo">
+            Chevy Care
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="calendario.html">Calendario</a></li>
+                <li class="nav-item"><a class="nav-link" href="mantenimiento.html">Mantenimiento</a></li>
+                <li class="nav-item"><a class="nav-link" href="calculadora.html">Calculadora</a></li>
+                <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+                <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="preguntas.html">Preguntas Frecuentes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="calculator" class="py-5">
+        <div class="container calculator-container" data-aos="fade-up">
+            <h2 class="text-center">Selecciona Servicios</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="service-card p-3" onclick="toggleService('Revisión General', 100, this)">
+                        <h5>Revisión General</h5>
+                        <p>Precio: <strong>$100</strong></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card p-3" onclick="toggleService('Cambio de Aceite', 200, this)">
+                        <h5>Cambio de Aceite</h5>
+                        <p>Precio: <strong>$200</strong></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card p-3" onclick="toggleService('Reparación de Motor', 300, this)">
+                        <h5>Reparación de Motor</h5>
+                        <p>Precio: <strong>$300</strong></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card p-3" onclick="toggleService('Reparación de Frenos', 150, this)">
+                        <h5>Reparación de Frenos</h5>
+                        <p>Precio: <strong>$150</strong></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card p-3" onclick="toggleService('Reparación de Suspensión', 250, this)">
+                        <h5>Reparación de Suspensión</h5>
+                        <p>Precio: <strong>$250</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-4">
+                <label for="discount">Descuento (%) si aplica:</label>
+                <input type="number" class="form-control" id="discount" placeholder="Ejemplo: 10" min="0" max="100">
+            </div>
+            <button id="calculateButton" class="btn btn-primary btn-block">Calcular Presupuesto</button>
+            <div id="result" class="result text-center"></div>
+        </div>
+    </section>
+
+    <footer class="text-white py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-right">
+                    <p>Integrantes:</p>
+                    <ul class="list-unstyled mb-0">
+                        <li>Luzmar Montauiti</li>
+                        <li>Paloma Squeo</li>
+                        <li>Daniel Olivier</li>
+                        <li>Esteban Correa</li>
+                    </ul>
+                </div>
+                <div class="footer-logo">
+                    <img src="image/logo_uade.png" alt="Logo de UADE" style="height: 50px;">
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p>
+                    <a href="https://tu-sitio-del-grupo.com" class="text-highlight">Visita nuestro sitio</a>
+                </p>
+            </div>
+            <p class="mt-3 text-center">Trabajo grupal - Materia: Diseño y Desarrollo Web (Curso: 480799, Grupo: 5)</p>
+        </div>
+    </footer>
+
+
+    <button id="scrollToTop" class="btn btn-primary" onclick="scrollToTop()">Volver Arriba</button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script>
+        AOS.init();
+
+        let selectedServices = [];
+
+        function toggleService(name, cost, element) {
+            const index = selectedServices.findIndex(service => service.name === name);
+            
+            if (index === -1) {
+                selectedServices.push({ name, cost });
+                element.classList.add('active');
+            } else {
+                selectedServices.splice(index, 1);
+                element.classList.remove('active');
+            }
+
+            updateResult();
+        }
+
+        function updateResult() {
+            if (selectedServices.length === 0) {
+                $('#result').text('No has seleccionado ningún servicio.');
+                return;
+            }
+
+            const serviceNames = selectedServices.map(service => service.name).join(', ');
+            $('#result').text(`Has seleccionado: ${serviceNames}. Ingresa un descuento si aplica.`);
+        }
+
+        $('#calculateButton').on('click', function() {
+            const discount = parseFloat($('#discount').val()) || 0;
+            
+            if (selectedServices.length === 0) {
+                $('#result').text('Por favor, selecciona al menos un servicio.');
+                return;
+            }
+
+            const totalCost = selectedServices.reduce((total, service) => total + service.cost, 0);
+            const discountedCost = totalCost - (totalCost * (discount / 100));
+            $('#result').text(`El costo total estimado para ${selectedServices.map(s => s.name).join(', ')} es: $${discountedCost.toFixed(2)}`);
+        });
+
+    
+        window.onscroll = function() {
+            const button = document.getElementById("scrollToTop");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = "block"; 
+            } else {
+                button.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevrolet Chevy Care</title>
+    <link href='https://unpkg.com/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <link rel="stylesheet" href="calendario.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="index.html">
+            <img src="image/logo.jpeg" alt="Logo" class="logo">
+            Chevy Care
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="calendario.html">Calendario</a></li>
+                <li class="nav-item"><a class="nav-link" href="mantenimiento.html">Mantenimiento</a></li>
+                <li class="nav-item"><a class="nav-link" href="calculadora.html">Calculadora</a></li>
+                <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+                <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="preguntas.html">Preguntas Frecuentes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="py-5 section_calendar">
+        <div class="container text-center">
+            <h2 class="section_calendar_title">Solicita tu Turno en Línea</h2>
+            <p class="lead section_calendar_description">Elige la fecha y hora que más te convenga para tu servicio.</p>
+            <div class="calendar-container">
+                <div id="calendar"></div>
+            </div>
+            <div id="timeSlots" class="mt-4" style="display: none;"></div>
+            <div class="mt-4">
+                <button class="btn btn-primary" id="confirmTurno" style="display: none; background-color: #e9940bb6;">Confirmar Turno</button>
+            </div>
+            <p id="selected-date" class="mt-3" style="font-weight: bold;"></p>
+        </div>
+    </section>
+
+    <footer class="text-white py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-right">
+                    <p>Integrantes:</p>
+                    <ul class="list-unstyled mb-0">
+                        <li>Luzmar Montauiti</li>
+                        <li>Paloma Squeo</li>
+                        <li>Daniel Olivier</li>
+                        <li>Esteban Correa</li>
+                    </ul>
+                </div>
+                <div class="footer-logo">
+                    <img src="image/logo_uade.png" alt="Logo de UADE" style="height: 50px;">
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p>
+                    <a href="https://tu-sitio-del-grupo.com" class="text-highlight">Visita nuestro sitio</a>
+                </p>
+            </div>
+            <p class="mt-3 text-center">Trabajo grupal - Materia: Diseño y Desarrollo Web (Curso: 480799, Grupo: 5)</p>
+        </div>
+    </footer>
+    <button id="scrollToTop" class="btn btn-primary" onclick="scrollToTop()">Volver Arriba</button>
+
+
+    <script src='https://unpkg.com/fullcalendar@5.10.1/main.min.js'></script>
+    <script src='https://unpkg.com/@fullcalendar/locales@5.10.1/es.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'es',
+                initialView: 'dayGridMonth',
+                selectable: true,
+                dateClick: function(info) {
+                    document.getElementById('selected-date').innerText = 'Fecha seleccionada: ' + info.dateStr;
+                    document.getElementById('timeSlots').style.display = 'block';
+                    showAvailableTimes(info.dateStr);
+                    document.getElementById('timeSlots').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            calendar.render();
+        });
+
+        function showAvailableTimes(selectedDate) {
+            const timeSlotsDiv = document.getElementById('timeSlots');
+            timeSlotsDiv.innerHTML = '<h5>Horarios Disponibles</h5>';
+            const availableTimes = [
+                "09:00 AM", "10:00 AM", "11:00 AM",
+                "01:00 PM", "02:00 PM", "03:00 PM"
+            ];
+
+            availableTimes.forEach(time => {
+                const slotDiv = document.createElement('div');
+                slotDiv.className = 'time-slot';
+                slotDiv.innerText = time;
+                slotDiv.onclick = function() {
+                    selectTimeSlot(slotDiv, time);
+                };
+                timeSlotsDiv.appendChild(slotDiv);
+            });
+        }
+
+        function selectTimeSlot(slotDiv, time) {
+            const slots = document.querySelectorAll('.time-slot');
+            slots.forEach(slot => slot.classList.remove('selected-time'));
+            slotDiv.classList.add('selected-time');
+            document.getElementById('confirmTurno').style.display = 'inline';
+            document.getElementById('confirmTurno').setAttribute('data-time', time);
+        }
+
+        document.getElementById('confirmTurno').addEventListener('click', function() {
+            const selectedDate = document.getElementById('selected-date').innerText;
+            const selectedTime = this.getAttribute('data-time');
+            alert('¡Tu turno ha sido confirmado para: ' + selectedDate + ' a las ' + selectedTime + '!');
+        });
+
+        window.onscroll = function() {
+            const button = document.getElementById("scrollToTop");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = "block"; 
+            } else {
+                button.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+    <script>
+      
+    </script>
+
+</body>
+</html>

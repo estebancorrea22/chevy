@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #837459;
+}
+
+.navbar {
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.4s, transform 0.3s;
+    background-color: #000000d4;
+}
+
+.navbar:hover {
+    transform: scale(1.02);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: #f1ad0f !important;
+}
+
+.nav-link {
+    position: relative;
+    color: #efd492;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #f1ad0f; 
+    transition: width 0.3s;
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover {
+    color: #efc033;
+}
+
+.nav-link:hover::after {
+    width: 100%; 
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.service-card {
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    padding: 20px; 
+    text-align: center; 
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.active {
+    background-color: #8a6018;
+    color: #ffffff;
+}
+.calculator-container {
+    padding: 50px 20px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.btn-primary {
+    background-color: #f1ad0f;
+    border-color: #8a6018;
+}
+.btn-primary:hover {
+    background-color: #8a6018;
+}
+.btn-primary:focus {
+    box-shadow: none;
+    background-color: #8a6018; 
+    border-color: #8a6018;
+}
+.result {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #10294f;
+    margin-top: 20px;
+}
+
+footer {
+    background-color: #000000d4;
+}
+
+.footer-logo {
+    margin-left: 20px; 
+}
+
+.text-white a {
+    color: #ffffff; 
+    text-decoration: underline; 
+}
+
+.text-highlight {
+    color: #f1ad0f; 
+    font-weight: bold; 
+    transition: transform 0.3s, color 0.3s; 
+}
+
+.text-highlight:hover {
+    color: #ffffff; 
+    transform: scale(1.1);
+    text-decoration: none; 
+}
+
+
+#scrollToTop {
+    position: fixed;
+    bottom: 20px; 
+    right: 20px;
+    display: none;
+    z-index: 1000;
+    border-radius: 50%; 
+    padding: 10px 15px; 
+    background-color: #8a6018;
+}
+
+#scrollToTop:hover {
+    background-color: #8a6018; 
+}
+
+@media (max-width: 768px) {
+    .d-flex {
+        flex-direction: column;
+        align-items: center;
+        text-align: center; 
+    }
+}

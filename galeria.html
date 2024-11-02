@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="galeria.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Galería de Proyectos - Chevrolet Chevy Care</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="index.html">
+            <img src="image/logo.jpeg" alt="Logo" class="logo">
+            Chevy Care
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="calendario.html">Calendario</a></li>
+                <li class="nav-item"><a class="nav-link" href="mantenimiento.html">Mantenimiento</a></li>
+                <li class="nav-item"><a class="nav-link" href="calculadora.html">Calculadora</a></li>
+                <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+                <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="preguntas.html">Preguntas Frecuentes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<section id="gallery" class="py-5">
+    <h2 data-aos="fade-up" class="gallery-title">Nuestros Proyectos</h2>
+    <div class="gallery-container">
+        <div class="gallery-item" data-aos="fade-up">
+            <img src="https://i.ytimg.com/vi/LxKLL0Q4kkk/maxresdefault.jpg">
+            <div class="overlay">
+                <h5>Restauración Chevy 1965</h5>
+                <p>Un clásico restaurado a su esplendor original.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+            <img src="https://i.ebayimg.com/thumbs/images/g/h3IAAOSw6r9nAwNA/s-l1200.jpg" alt="Reparación de Motor">
+            <div class="overlay">
+                <h5>Reparación de Motor</h5>
+                <p>Solucionamos problemas de motor, asegurando el mejor rendimiento.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://www.compraensanjuan.com/fotos_vehiculos/2308500_1.jpg" alt="Restauración de Chevy 1972">
+            <div class="overlay">
+                <h5>Restauración Chevy 1972</h5>
+                <p>Una obra maestra restaurada, lista para la carretera.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+            <img src="https://panoramaregistral.com.ar/wp-content/uploads/2022/12/image-11-1024x576.png" alt="Reparación de Suspensión">
+            <div class="overlay">
+                <h5>Reparación de Suspensión</h5>
+                <p>Mejoramos la seguridad y el confort de tu Chevy.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+            <img src="https://www.deruedas.com.ar/images/autos/Chevrolet-Chevy-1973/597/597331_2_im.jpg?edit=10" alt="Restauración de Chevy 1980">
+            <div class="overlay">
+                <h5>Restauración Chevy 1980</h5>
+                <p>Devuelto a la vida con un toque moderno.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
+            <img src="https://i.ytimg.com/vi/N53EiWM9_kk/maxresdefault.jpg" alt="Reparación de Frenos">
+            <div class="overlay">
+                <h5>Reparación de Frenos</h5>
+                <p>Garantizamos la seguridad en cada parada.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel">Título del Proyecto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="" id="modalImage" class="img-fluid" alt="Imagen del Proyecto">
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-white py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="text-right">
+                <p>Integrantes:</p>
+                <ul class="list-unstyled mb-0">
+                    <li>Luzmar Montauiti</li>
+                    <li>Paloma Squeo</li>
+                    <li>Daniel Olivier</li>
+                    <li>Esteban Correa</li>
+                </ul>
+            </div>
+            <div class="footer-logo">
+                <img src="image/logo_uade.png" alt="Logo de UADE" style="height: 50px;">
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <p>
+                <a href="https://tu-sitio-del-grupo.com" class="text-highlight">Visita nuestro sitio</a>
+            </p>
+        </div>
+        <p class="mt-3 text-center">Trabajo grupal - Materia: Diseño y Desarrollo Web (Curso: 480799, Grupo: 5)</p>
+    </div>
+</footer>
+<button id="scrollToTop" class="btn btn-primary" onclick="scrollToTop()">Volver Arriba</button>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script>
+    AOS.init();
+
+
+    $('.gallery-item').click(function() {
+        const imgSrc = $(this).find('img').attr('src');
+        const title = $(this).find('.overlay h5').text();
+        const description = $(this).find('.overlay p').text();
+
+        $('#modalImage').attr('src', imgSrc);
+        $('#projectModalLabel').text(title);
+        $('#modalDescription').text(description);
+
+        $('#projectModal').modal('show');
+    });
+
+    window.onscroll = function() {
+            const button = document.getElementById("scrollToTop");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = "block"; 
+            } else {
+                button.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+</script>
+</body>
+</html>
