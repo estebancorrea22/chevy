@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chevy Care ofrece servicios de mantenimiento especializados para vehículos Chevrolet. Mantén tu Chevy en su mejor forma con nuestros expertos.">
+    <meta name="keywords" content="Chevrolet, Chevy, mantenimiento, servicios automotrices, reparación de vehículos, Chevrolet care">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="nostros.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
-    <title>Sobre Nosotros - Chevrolet Chevy Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Chevrolet Chevy Care</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -14,7 +17,7 @@
             <img src="image/logo.jpeg" alt="Logo" class="logo">
             Chevy Care
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -27,15 +30,58 @@
                 <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
                 <li class="nav-item"><a class="nav-link" href="preguntas.html">Preguntas Frecuentes</a></li>
             </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html">
-                        <i class="fas fa-sign-in-alt"></i> Login
-                    </a>
-                </li>
-            </ul>
+            <div class="navbar-nav ml-auto" style="display: flex; gap: 10px;">
+                <button id="loginBtn" class="btn btn-primary" onclick="showLogin()"> <i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
+                <button id="registerBtn" class="btn btn-secondary" onclick="showRegister()">Registrarme</button>
+                <button id="logoutBtn" class="btn btn-danger d-none" onclick="logout()">Salir</button>
+            </div>
         </div>
     </nav>
+    <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="authModalLabel">Log In / Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="alertContainer" class="d-none"></div>
+
+                    <form id="loginForm" class="d-none">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="login()">Log In</button>
+                    </form>
+
+                    <form id="registerForm" class="d-none">
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmEmail" class="form-label">Confirm Email</label>
+                            <input type="email" class="form-control" id="confirmEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" minlength="4" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" minlength="4" required>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="register()">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <section class="section_header">
     <h1 class="section_header_title">Bienvenido a Chevrolet Chevy Care</h1>
@@ -136,7 +182,11 @@
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
-</section>
+</section> 
+
+<button onclick="scrollToTop()" id="backToTop">
+    <img src="image/flecha.jpeg" alt="Volver Arriba">
+</button>
 
 <footer class="text-white py-5">
     <div class="container">
@@ -165,26 +215,11 @@
 <button id="scrollToTop" class="btn btn-primary" onclick="scrollToTop()">Volver Arriba</button>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
 <script>
     AOS.init();
-    window.onscroll = function() {
-            const button = document.getElementById("scrollToTop");
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                button.style.display = "block"; 
-            } else {
-                button.style.display = "none";
-            }
-        };
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
 </script>
 </body>
 </html>

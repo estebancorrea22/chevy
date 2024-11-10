@@ -9,30 +9,39 @@ html, body {
     background-color: #837459;
 }
 
-
 .navbar {
-    position: relative;
-    overflow: hidden;
-    transition: background-color 0.4s, transform 0.3s;
-    background-color: #000000d4;
-}
-
-.navbar:hover {
-    transform: scale(1.02);
+    background-color: black;
 }
 
 .navbar-brand {
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #f1ad0f !important;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
 }
 
 .nav-link {
     position: relative;
-    color: #efd492;
     font-weight: 600;
     padding: 10px 15px;
     transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #efc033;
+}
+
+.nav-link:hover::after {
+    width: 100%; 
 }
 
 .nav-link::after {
@@ -48,13 +57,37 @@ html, body {
     transform: translateX(-50%);
 }
 
-.nav-link:hover {
-    color: #efc033;
+.navbar-nav.ml-auto {
+    margin-left: auto;
 }
 
-.nav-link:hover::after {
-    width: 100%; 
+#auth-buttons button {
+    margin: 5px;
 }
+
+
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    border: none;
+    outline: none;      
+}
+
+#backToTop img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#backToTop:hover img {
+    opacity: 0.8;
+} 
 
 .logo {
     height: 40px;
@@ -62,6 +95,11 @@ html, body {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #e9940bb6 !important;
+    border-color: #e9940bb6 !important;
 }
 
 .gallery-title {
@@ -121,7 +159,6 @@ html, body {
     transition: opacity 0.5s;
 }
 .modal-content {
-    background-color: #f1ad0f;
     color: #10294f;
     border-radius: 15px;
 }
