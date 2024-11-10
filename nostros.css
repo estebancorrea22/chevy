@@ -15,7 +15,7 @@ html, body {
 
 .navbar-brand {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #f1ad0f !important;
 }
 
@@ -95,6 +95,11 @@ html, body {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #e9940bb6 !important;
+    border-color: #e9940bb6 !important;
 }
 .section_header {
     background: url('image/fondo.jpg') no-repeat center center;

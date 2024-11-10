@@ -235,3 +235,33 @@ footer {
         text-align: center; 
     }
 }
+
+.modal-content {
+    background-color: #c4bdb1; /* Fondo con el color de la sección */
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.modal-header {
+    background-color: #f1ad0f; /* Color de la cabecera */
+    color: white;
+}
+
+.modal-header .btn-close {
+    color: white;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+#serviceDescription {
+    font-size: 1.1rem;
+    color: #393937;
+    line-height: 1.5;
+}

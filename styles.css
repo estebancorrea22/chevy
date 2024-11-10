@@ -128,7 +128,7 @@ html, body {
 }
 
 .bg-image-2 {
-    background-image: url('image/chevy_2.jpeg');
+    background-image: url('image/image-3.jpg');
     height: 60vh;
     background-size: cover;
     background-position: center;
@@ -140,6 +140,7 @@ html, body {
     background-size: cover;
     background-position: center;
 }
+
 
 .identidad {
     background-color: #8a6018;
@@ -316,3 +317,4 @@ footer {
         text-align: center; 
     }
 }
+
